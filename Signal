@@ -1,0 +1,35 @@
+#define p 4
+#define kwi1 10
+
+
+void setup() {
+  pinMode(p, OUTPUT);
+  pinMode(kwi1, INPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  Serial.println(digitalRead(kwi1));
+  for (int i = 1000; i > 0; i = i - 10) {
+    if (digitalRead(kwi1) == 1) {
+      mirg1(p, i);
+    } 
+    else {
+      while (true) {
+        kwi2(p);
+      }
+    }
+  }
+}
+void mirg1(int pin, int timi) {
+  digitalWrite(pin, 1);
+  delay(timi);
+  digitalWrite(pin, 0);
+  delay(timi);
+}
+void kwi2(int pin) {
+  digitalWrite(pin, 1);
+  delay(30);
+  digitalWrite(pin, 0);
+  delay(30);
+}
